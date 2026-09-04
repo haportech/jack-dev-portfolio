@@ -1,0 +1,22 @@
+{
+  "name": "personal-webite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Jack — Dev Portfolio",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "worker:dev": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "vite": "^8.0.16",
+    "wrangler": "^4.129.0"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "motion": "^13.2.0"
+  }
+}
