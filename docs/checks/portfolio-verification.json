@@ -1,0 +1,46 @@
+{
+  "baseURL": "https://hapordev.com",
+  "passed": true,
+  "checks": [
+    {
+      "name": "three tabs, rapid switching, keyboard wrap, Home and End",
+      "passed": true
+    },
+    {
+      "name": "correct case data, loaded screenshots, modal inertness and focus restore",
+      "passed": true
+    },
+    {
+      "name": "theme controls and all 15 archive entries",
+      "passed": true
+    },
+    {
+      "name": "mobile navigation opens, toggles, closes on link and Escape",
+      "passed": true
+    },
+    {
+      "name": "no overflow at five widths in both themes",
+      "passed": true
+    },
+    {
+      "name": "selection, editable controls, drag suppression and valid links",
+      "passed": true
+    },
+    {
+      "name": "contact invalid validation, intercepted success and intercepted failure",
+      "passed": true
+    },
+    {
+      "name": "reduced motion is static",
+      "passed": true
+    },
+    {
+      "name": "SEO title, canonical, favicon, schema, robots, sitemap and privacy",
+      "passed": true
+    }
+  ],
+  "emailRequestsIntercepted": 2,
+  "pageErrors": [],
+  "videoRequests": [],
+  "reducedMotionCapture": "Interaction/layout screenshots use normal motion after settlement; final static check emulates reduce."
+}

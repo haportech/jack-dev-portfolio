@@ -1,96 +1,93 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f5ef" />
-    <title>Jack — Dev</title>
-    <meta name="description" content="Jack is a developer in Vientiane building useful products across interfaces, backend systems, and infrastructure." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%232457ff%22/><text x=%2250%22 y=%2268%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2256%22 font-weight=%22700%22 fill=%22white%22>J</text></svg>" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header" data-header>
-      <a class="wordmark" href="#top" aria-label="Jack, home"><span>JACK</span><span>/DEV</span></a>
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Open menu</span><span></span><span></span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a href="#work">Work</a><a href="#projects">Projects</a><a href="#capabilities">Capabilities</a><a href="#about">About</a>
-        <a class="nav-cta" href="#contact">Start a project</a>
-      </nav>
-    </header>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jack · Hapur Dev | Developer in Vientiane, Laos</title>
+  <meta name="description" content="I'm Jack, the developer behind Hapur Dev in Vientiane, Laos. I design and build websites, applications, developer tools, and the systems behind them.">
+  <meta name="theme-color" content="#f4f2ed">
+  <link rel="canonical" href="https://hapordev.com/">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jack · Hapur Dev | Developer in Vientiane">
+  <meta property="og:description" content="From a useful idea to a working product. Websites, applications, developer tools, and the systems behind them.">
+  <meta property="og:url" content="https://hapordev.com/">
+  <meta property="og:site_name" content="Hapur Dev">
+  <meta property="og:image" content="https://hapordev.com/social-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jack's Hapur Dev portfolio, featuring his product design and development work">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jack · Hapur Dev | Developer in Vientiane">
+  <meta name="twitter:description" content="Useful software, from the first screen to the systems behind it.">
+  <meta name="twitter:image" content="https://hapordev.com/social-share.png">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"ProfilePage","@id":"https://hapordev.com/#profile","url":"https://hapordev.com/","name":"Jack · Hapur Dev","mainEntity":{"@type":"Person","@id":"https://hapordev.com/#jack","name":"Jack","alternateName":"Hapur Dev","url":"https://hapordev.com/","jobTitle":"Developer","description":"Developer in Vientiane, Laos, building websites, applications, developer tools, and infrastructure.","homeLocation":{"@type":"City","name":"Vientiane, Laos"},"sameAs":["https://github.com/haportech","https://t.me/haportech"]}}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="navigation glass">
+    <a class="wordmark" href="#top" aria-label="Jack, Hapur Dev home"><img class="brand-image" src="/media/logo.png" alt="" width="32" height="32" draggable="false">Jack<span>.</span></a>
+    <button id="mobile-menu" class="mobile-menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav id="primary-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="hero-context entrance">Independent developer in Vientiane, Laos</p>
+      <h1 id="hero-title"><span class="entrance">A useful idea.</span><span class="serif entrance">A working reality.</span></h1>
+      <p class="hero-description entrance">I design the experience, build the software,<br class="desktop-break"> and connect everything behind it.</p>
+      <div class="hero-actions entrance"><a class="button primary" href="#work">Meet the work</a><a class="text-link" href="#contact">Tell me your idea</a></div>
+      <div class="hero-meta entrance"><span>From interface to infrastructure.</span><span>Building since 2020</span></div>
+    </section>
 
-    <main id="main">
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <div class="hero-grid" aria-hidden="true"></div><div class="hero-orbit" aria-hidden="true"></div>
-        <p class="availability"><span></span> Available for select freelance projects</p>
-        <h1 class="hero-title" id="hero-title"><span class="hero-jack">JACK</span><span class="hero-dev">DEV<span class="hero-dot">.</span></span></h1>
-        <div class="hero-portrait-wrap" aria-hidden="true">
-          <div class="portrait-disc"></div>
-          <img class="hero-portrait hero-logo" src="/media/github-mark.png" alt="" width="512" height="512" />
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><h2 id="work-title">A few things I've put into the world.</h2><p>Choose a project. Take a closer look.</p></div>
+      <div class="project-stage" id="project-stage">
+        <div class="stage-backdrop" aria-hidden="true"></div>
+        <div class="project-shell glass">
+          <div class="stage-toolbar"><span>Selected work</span><span id="project-counter" aria-hidden="true">1 of 3</span></div>
+          <div class="project-selector" role="tablist" aria-label="Featured projects" id="project-tabs"></div>
+          <div id="project-panels"></div>
+          <noscript><p class="noscript-message">My selected work: <a href="https://exchange.haportech.space/">Jack Exchange</a>, <a href="https://github.com/haportech/supplytrace/tree/codex/local-full-scan">SupplyTrace source</a>, and <a href="https://vangdy-guesthouse.haportech.space/">Vangdy Guest House</a>. Enable JavaScript to use the project viewer.</p></noscript>
         </div>
-        <div class="hero-bottom">
-          <p class="hero-intro">I turn rough ideas into useful software—across the interface, backend, and infrastructure.</p>
-          <dl class="hero-facts"><div><dt>Based</dt><dd>Vientiane, Laos</dd></div><div><dt>Building since</dt><dd>2020</dd></div></dl>
-          <a class="round-link" href="#work" aria-label="View selected work"><span>View work</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0 6-6m-6 6-6-6" /></svg></a>
-        </div>
-      </section>
+        <p class="stage-note">Real products. From the first sketch to the live system.</p>
+      </div>
+    </section>
 
-      <div class="ticker" aria-hidden="true"><div class="ticker-track">
-        <span>PRODUCT DESIGN</span><i></i><span>FULL-STACK DEVELOPMENT</span><i></i><span>INFRASTRUCTURE</span><i></i>
-        <span>PRODUCT DESIGN</span><i></i><span>FULL-STACK DEVELOPMENT</span><i></i><span>INFRASTRUCTURE</span><i></i>
-      </div></div>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div><p class="section-kicker">The way I work</p><h2 id="about-title">One person.<br>Every connection.</h2></div>
+      <div class="about-copy"><p class="serif">The screen is only the beginning.</p><p>I'm Jack, the developer behind Hapur Dev in Vientiane, Laos. I work across product design, applications, data, and infrastructure, keeping the idea connected from the first sketch to the live system.</p><div class="capabilities"><span>Interface</span><span>Application</span><span>Intelligence</span><span>Infrastructure</span></div></div>
+    </section>
 
-      <section class="identity-section" id="about" aria-labelledby="identity-title">
-        <p class="section-label">01 / About</p>
-        <h2 class="identity-title" id="identity-title">One developer.<br /><em>The whole path.</em></h2>
-        <div class="identity-copy"><p>I design the product, build the application, connect the data, and run the infrastructure behind it.</p><p>The goal is simple: software that is clear to use, useful in practice, and understandable after it ships.</p></div>
-        <p class="identity-side" aria-hidden="true">FROM FIRST SKETCH<br />TO LIVE SYSTEM</p>
-      </section>
+    <section class="archive-section" aria-labelledby="archive-title">
+      <div class="section-heading"><h2 id="archive-title">The rest of the workshop.</h2><p>Tools, systems, and experiments.</p></div>
+      <div id="archive-preview" class="archive-list"></div>
+      <details id="archive-more"><summary>See all projects</summary><div id="archive-rest" class="archive-list"></div></details>
+    </section>
 
-      <section class="featured" id="work" aria-labelledby="work-title">
-        <header class="section-intro"><p class="section-label">02 / Selected work</p><h2 id="work-title">Three products.<br /><em>Built end to end.</em></h2><p>Scroll through the work</p></header>
-        <div id="featured-reel"></div>
-      </section>
-
-      <section class="archive" id="projects" aria-labelledby="archive-title">
-        <header class="archive-header"><p class="section-label">03 / Project archive</p><h2 id="archive-title">More things<br /><em>I've made.</em></h2><p>Tools, systems, experiments, and practical software. Projects without public links stay here as work, not empty buttons.</p></header>
-        <div class="archive-sticky"><div class="project-track" id="project-track"></div></div>
-      </section>
-
-      <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="capabilities-heading"><p class="section-label">04 / Capabilities</p><h2 id="capabilities-title">What I can<br /><em>bring in.</em></h2></div>
-        <div class="capabilities-body"><div class="capability-tabs" id="capability-tabs" role="tablist" aria-label="Capability groups"></div><div id="capability-panels"></div></div>
-      </section>
-
-      <section class="principles" aria-labelledby="principles-title">
-        <p class="section-label">05 / How I build</p><h2 id="principles-title">Useful first.<br /><em>Polished all the way.</em></h2>
-        <div class="principle-list">
-          <article><span>01</span><h3>Make it useful</h3><p>Start with the real problem and remove anything that does not help solve it.</p></article>
-          <article><span>02</span><h3>Own the whole path</h3><p>Move from interface to backend to deployment without losing the original intent.</p></article>
-          <article><span>03</span><h3>Keep it understandable</h3><p>Build systems people can use, inspect, maintain, and trust.</p></article>
-        </div>
-      </section>
-
-      <section class="contact" id="contact" aria-labelledby="contact-title">
-        <div class="contact-heading"><p class="section-label">06 / Contact</p><h2 id="contact-title">Have a useful idea?<br /><em>Let's build it.</em></h2><p>Available for select freelance projects.</p>
-          <div class="contact-links"><a href="mailto:hp@haportech.space">Email</a><a href="https://github.com/haportech" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://t.me/haportech" target="_blank" rel="noopener noreferrer">Telegram</a></div>
-        </div>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <p class="section-kicker">Have something in mind?</p><h2 id="contact-title">Let's make it<br><span class="serif">something real.</span></h2>
+      <div class="contact-layout">
+        <div class="contact-details"><p>Tell me what you want to build and where you are starting.</p><a class="text-link contact-email" href="mailto:hp@haportech.space">hp@haportech.space</a><div class="contact-links"><a href="https://github.com/haportech" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://t.me/haportech" target="_blank" rel="noopener noreferrer">Telegram</a></div></div>
         <form class="contact-form" id="contact-form" novalidate>
-          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error" placeholder="Your name" /><span class="field-error" id="name-error"></span></div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" placeholder="you@example.com" /><span class="field-error" id="email-error"></span></div>
-          <div class="field"><label for="message">Project</label><textarea id="message" name="message" rows="4" aria-describedby="message-error" placeholder="What are you building?"></textarea><span class="field-error" id="message-error"></span></div>
-          <button class="submit-button" type="submit"><span>Send message</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></button>
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error"><span class="field-error" id="name-error"></span></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error"><span class="field-error" id="email-error"></span></div>
+          <div class="field"><label for="message">Project</label><textarea id="message" name="message" rows="4" required aria-describedby="message-error"></textarea><span class="field-error" id="message-error"></span></div>
+          <button class="button primary" type="submit"><span>Send message</span></button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="form-note">Your message is sent through EmailJS. <a href="/privacy/">Privacy details</a>.</p>
         </form>
-      </section>
-    </main>
-
-    <footer class="site-footer"><a class="wordmark" href="#top"><span>JACK</span><span>/DEV</span></a><p>Built in Vientiane · 2026</p><a href="#top">Back to top ↑</a></footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="wordmark" href="#top" aria-label="Back to top">Jack<span>.</span></a><p>Hapur Dev · Built in Vientiane · © 2026 Jack</p><a href="/privacy/">Privacy</a><a href="#top">Back to top</a></footer>
+  <dialog id="case-dialog" aria-labelledby="case-title"><div class="dialog-heading"><p>Inside the project</p><button id="close-case" class="close-button" type="button" aria-label="Close case study">Close <span aria-hidden="true">×</span></button></div><h2 id="case-title"></h2><p id="case-description"></p><dl class="case-facts" id="case-facts"></dl><img id="case-image" alt="" width="1440" height="1000"><div id="case-links" class="case-links"></div></dialog>
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>

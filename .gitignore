@@ -3,3 +3,5 @@ dist/
 .wrangler/
 .dev.vars
 .DS_Store
+.serena/
+.playwright-mcp/

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An interactive portfolio direction for Jack: expressive type, frosted glass, and real working projects.">
+  <title>Jack | Quiet Glass</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./quiet-glass.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="navigation glass">
+    <a class="wordmark" href="#top" aria-label="Jack, home">Jack<span>.</span></a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="hero-context entrance">Independent developer in Vientiane, Laos</p>
+      <h1 id="hero-title"><span class="entrance">A useful idea.</span><span class="serif entrance">A working reality.</span></h1>
+      <p class="hero-description entrance">I design the experience, build the software,<br class="desktop-break"> and connect everything behind it.</p>
+      <div class="hero-actions entrance"><a class="button primary" href="#work">Meet the work</a><a class="text-link" href="mailto:hp@haportech.space">Tell me your idea</a></div>
+      <div class="hero-meta entrance"><span>From interface to infrastructure.</span><span>Building since 2020</span></div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><h2 id="work-title">A few things I've put into the world.</h2><p>Choose a project. Take a closer look.</p></div>
+      <div class="project-stage" id="project-stage">
+        <div class="stage-backdrop" aria-hidden="true"></div>
+        <div class="project-shell glass">
+          <div class="stage-toolbar"><span>Selected work</span><span id="project-counter" aria-hidden="true">1 of 3</span></div>
+          <div class="project-selector" role="tablist" aria-label="Featured projects" id="project-tabs"></div>
+          <div id="project-panels"></div>
+          <noscript><p class="noscript-message">This interactive preview needs JavaScript. <a href="/">See the current portfolio</a>.</p></noscript>
+        </div>
+        <p class="stage-note">Real products. From the first sketch to the live system.</p>
+      </div>
+    </section>
+
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div><p class="section-kicker">The way I work</p><h2 id="about-title">One person.<br>Every connection.</h2></div>
+      <div class="about-copy"><p class="serif">The screen is only the beginning.</p><p>I work across product design, applications, data, and infrastructure. That means the idea stays connected as it moves from a sketch to something people can actually use.</p><div class="capabilities"><span>Interface</span><span>Application</span><span>Intelligence</span><span>Infrastructure</span></div></div>
+    </section>
+
+    <section class="archive-section" aria-labelledby="archive-title">
+      <div class="section-heading"><h2 id="archive-title">The rest of the workshop.</h2><p>Tools, systems, and experiments.</p></div>
+      <div id="archive-preview" class="archive-list"></div>
+      <details id="archive-more"><summary>See all projects</summary><div id="archive-rest" class="archive-list"></div></details>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><p class="section-kicker">Have something in mind?</p><h2 id="contact-title">Let's make it<br><span class="serif">something real.</span></h2><a class="button primary" href="mailto:hp@haportech.space">Email Jack</a><div class="contact-links"><a href="https://github.com/haportech" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://t.me/haportech" target="_blank" rel="noopener noreferrer">Telegram</a></div></section>
+  </main>
+
+  <footer class="site-footer"><p>Jack / Built in Vientiane</p><a href="./index.html">Compare the earlier directions</a><p>Quiet Glass / Interactive proposal</p></footer>
+  <aside class="design-notes" aria-labelledby="design-notes-title"><h2 id="design-notes-title">The direction behind the design</h2><p>Apple's material depth. OpenAI's spacious clarity. Anthropic's editorial warmth. Bricolage Grotesque and Newsreader give the combination its own voice.</p><div><a href="https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/" target="_blank" rel="noopener noreferrer">Apple Liquid Glass</a><a href="https://openai.com/" target="_blank" rel="noopener noreferrer">OpenAI</a><a href="https://www.anthropic.com/" target="_blank" rel="noopener noreferrer">Anthropic</a><a href="https://21st.dev/@akashsingh890901-crypto/components/glassmorphism-navigation" target="_blank" rel="noopener noreferrer">21st glass navigation</a><a href="./quiet-glass-proposal.md">Design proposal</a></div></aside>
+
+  <dialog id="case-dialog" aria-labelledby="case-title"><div class="dialog-heading"><p>Inside the project</p><button id="close-case" class="close-button" type="button" aria-label="Close case study">Close <span aria-hidden="true">×</span></button></div><h2 id="case-title"></h2><p id="case-description"></p><dl class="case-facts" id="case-facts"></dl><img id="case-image" alt="" width="1440" height="900"><div id="case-links" class="case-links"></div></dialog>
+  <script type="module" src="./quiet-glass.js"></script>
+</body>
+</html>
