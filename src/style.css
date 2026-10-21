@@ -112,8 +112,9 @@ summary { min-height: 52px; padding-block: 14px; font-size: 14px; width: fit-con
 .contact-section { text-align: center; padding: 70px 24px 95px; border-top: 1px solid var(--line); }
 .contact-section h2 { font-size: clamp(58px,6.5vw,90px); font-weight: 500; letter-spacing: -.035em; line-height: 1.04; margin-bottom: 30px; }
 .contact-section h2 .serif { letter-spacing: -.04em; }
-.contact-links { display: flex; justify-content: center; gap: 25px; margin-top: 24px; font-size: 14px; }
-.contact-links a { min-height: 44px; display: inline-flex; align-items: center; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 24px; font-size: 14px; }
+.contact-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; }
+.contact-links svg { flex-shrink: 0; }
 .site-footer { width: min(1118px,calc(100% - 64px)); margin: auto; border-top: 1px solid var(--line); padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 12px; }
 .site-footer p { margin: 0; }
 .site-footer a { min-height: 44px; display: inline-flex; align-items: center; }

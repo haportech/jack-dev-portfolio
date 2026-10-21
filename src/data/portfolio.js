@@ -16,7 +16,7 @@ export const featuredProjects = [
     alt: 'Jack Exchange converter with its Quiet Glass interface and a reference-rate result',
     detailAlt: 'Jack Exchange rate sources page explaining institutional reference data',
     links: [
-      { label: 'Visit website', url: 'https://exchange.haportech.space/' },
+      { label: 'Visit website', url: 'https://exchange.hapordev.com/' },
       { label: 'GitHub', url: 'https://github.com/haportech/jack-exchange-web' },
     ],
   },
@@ -29,14 +29,15 @@ export const featuredProjects = [
     description: 'A security tool that checks public GitHub projects, explains risky software parts in plain language, and saves results for later review.',
     role: 'Product design · Security research · Development',
     scale: 'Repository-wide package analysis',
-    status: 'Source available',
+    status: 'Public demo',
     outcome: 'Turns dependency risk into a clear, actionable report.',
     accent: '#00c844',
     poster: '/media/supplytrace-home.webp',
     detail: '/media/supplytrace-detail.webp',
-    alt: 'SupplyTrace homepage with a repository input and its Quiet Glass interface',
+    alt: 'SupplyTrace public demo with a link to an example dependency report',
     detailAlt: 'SupplyTrace example report showing package findings and risk information',
     links: [
+      { label: 'Live demo', url: 'https://supplytrace.haportech-co-ltd.workers.dev/' },
       { label: 'GitHub', url: 'https://github.com/haportech/supplytrace-web' },
     ],
   },
@@ -57,7 +58,7 @@ export const featuredProjects = [
     alt: 'Vangdy Guest House homepage with the real building photograph and Quiet Glass navigation',
     detailAlt: 'Vangdy Guest House rooms and prices with an actual room photograph',
     links: [
-      { label: 'Visit website', url: 'https://vangdy-guesthouse.haportech.space/' },
+      { label: 'Visit website', url: 'https://vangdygh.hapordev.com/' },
     ],
   },
 ]

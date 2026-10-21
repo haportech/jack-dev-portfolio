@@ -123,8 +123,8 @@ try {
     assert.equal(await page.locator('.private-project').filter({ hasText: /^Private project$/ }).count(), 4)
     await page.locator('#project-tabs [role="tab"]').nth(1).click()
     const supplyPanel = await selected(1)
-    assert.equal(await supplyPanel.locator('.project-actions a').textContent(), 'GitHub')
-    assert.equal(await supplyPanel.locator('.project-actions a').getAttribute('href'), 'https://github.com/haportech/supplytrace-web')
+    assert.equal(await supplyPanel.locator('.project-actions a').textContent(), 'Live demo')
+    assert.equal(await supplyPanel.locator('.project-actions a').getAttribute('href'), 'https://supplytrace.haportech-co-ltd.workers.dev/')
   })
   await step('mobile navigation opens, toggles, closes on link and Escape', async () => {
     await page.setViewportSize({ width: 390, height: 844 })
@@ -200,6 +200,20 @@ try {
     assert.equal(await page.locator('form').count(), 0)
     assert.doesNotMatch(await page.content(), /hp@haportech\.space|emailjs/i)
     assert.deepEqual(emailRequests, [])
+    const socialLinks = page.locator('.contact-links a')
+    assert.deepEqual(await socialLinks.allTextContents().then(labels => labels.map(label => label.trim())), ['GitHub', 'Telegram', 'LinkedIn'])
+    assert.deepEqual(await socialLinks.evaluateAll(links => links.map(link => link.href)), [
+      'https://github.com/haportech',
+      'https://t.me/haportech',
+      'https://www.linkedin.com/in/hapo-laotouxiongyer-a073b943b/',
+    ])
+    for (const link of await socialLinks.all()) {
+      assert.equal(await link.locator('svg[aria-hidden="true"] path').count(), 1)
+      assert.equal(await link.locator('img').count(), 0)
+      assert.ok((await link.boundingBox()).height >= 44)
+      await link.focus()
+      assert.equal(await link.evaluate(element => element === document.activeElement), true)
+    }
   })
   await step('reduced motion is static', async () => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -232,6 +246,7 @@ try {
     for (const raw of schemas) {
       const schema = JSON.parse(raw)
       assert.ok(schema['@context'] && (schema['@type'] || schema['@graph']))
+      if (schema['@type'] === 'ProfilePage') assert.ok(schema.mainEntity.sameAs.includes('https://www.linkedin.com/in/hapo-laotouxiongyer-a073b943b/'))
     }
     for (const [path, pattern] of [['/robots.txt', /sitemap:/i], ['/sitemap.xml', /<urlset[\s>]/i], ['/privacy/', /privacy/i]]) {
       const response = await page.request.get(new URL(path, baseURL).href)
