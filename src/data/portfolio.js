@@ -15,7 +15,10 @@ export const featuredProjects = [
     detail: '/media/jack-exchange-detail.webp',
     alt: 'Jack Exchange converter with its Quiet Glass interface and a reference-rate result',
     detailAlt: 'Jack Exchange rate sources page explaining institutional reference data',
-    links: [{ label: 'Visit website', url: 'https://exchange.haportech.space/' }],
+    links: [
+      { label: 'Visit website', url: 'https://exchange.haportech.space/' },
+      { label: 'GitHub', url: 'https://github.com/haportech/jack-exchange-web' },
+    ],
   },
   {
     id: 'supplytrace',
@@ -34,7 +37,7 @@ export const featuredProjects = [
     alt: 'SupplyTrace homepage with a repository input and its Quiet Glass interface',
     detailAlt: 'SupplyTrace example report showing package findings and risk information',
     links: [
-      { label: 'GitHub', url: 'https://github.com/haportech/supplytrace/tree/codex/local-full-scan' },
+      { label: 'GitHub', url: 'https://github.com/haportech/supplytrace-web' },
     ],
   },
   {
@@ -53,7 +56,10 @@ export const featuredProjects = [
     detail: '/media/vangdy-detail.webp',
     alt: 'Vangdy Guest House homepage with the real building photograph and Quiet Glass navigation',
     detailAlt: 'Vangdy Guest House rooms and prices with an actual room photograph',
-    links: [{ label: 'Visit website', url: 'https://vangdy-guesthouse.haportech.space/' }],
+    links: [
+      { label: 'Visit website', url: 'https://vangdy-guesthouse.haportech.space/' },
+      { label: 'GitHub', url: 'https://github.com/haportech/vangdy-guesthouse-web' },
+    ],
   },
 ]
 

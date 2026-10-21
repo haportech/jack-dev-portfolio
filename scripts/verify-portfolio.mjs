@@ -129,7 +129,7 @@ try {
     await page.locator('#project-tabs [role="tab"]').nth(1).click()
     const supplyPanel = await selected(1)
     assert.equal(await supplyPanel.locator('.project-actions a').textContent(), 'GitHub')
-    assert.equal(await supplyPanel.locator('.project-actions a').getAttribute('href'), 'https://github.com/haportech/supplytrace/tree/codex/local-full-scan')
+    assert.equal(await supplyPanel.locator('.project-actions a').getAttribute('href'), 'https://github.com/haportech/supplytrace-web')
   })
   await step('mobile navigation opens, toggles, closes on link and Escape', async () => {
     await page.setViewportSize({ width: 390, height: 844 })
