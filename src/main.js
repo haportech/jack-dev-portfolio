@@ -1,5 +1,4 @@
 import './style.css'
-import emailjs from '@emailjs/browser'
 import { animate, scroll, stagger } from 'motion'
 import { featuredProjects, projectArchive } from './data/portfolio.js'
 
@@ -180,62 +179,4 @@ document.addEventListener('dragstart', (event) => {
   event.preventDefault()
 })
 
-function initContactForm() {
-  emailjs.init('HOuzM-QQMxMXPbDeS')
-  const form = document.querySelector('#contact-form')
-  const status = document.querySelector('#form-status')
-  const submit = form.querySelector('button[type="submit"]')
-  const fields = {
-    name: { input: form.elements.name, message: 'Add your name.' },
-    email: { input: form.elements.email, message: 'Add a valid email address.' },
-    message: { input: form.elements.message, message: 'Tell me a little about the project.' },
-  }
-
-  const validate = () => {
-    let firstInvalid = null
-    Object.entries(fields).forEach(([key, field]) => {
-      const value = field.input.value.trim()
-      const invalid = !value || (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
-      field.input.setAttribute('aria-invalid', String(invalid))
-      document.querySelector(`#${key}-error`).textContent = invalid ? field.message : ''
-      if (invalid && !firstInvalid) firstInvalid = field.input
-    })
-    firstInvalid?.focus()
-    return !firstInvalid
-  }
-
-  Object.values(fields).forEach(({ input }) => input.addEventListener('input', () => {
-    input.removeAttribute('aria-invalid')
-    document.querySelector(`#${input.id}-error`).textContent = ''
-  }))
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault()
-    status.textContent = ''
-    status.className = 'form-status'
-    if (!validate()) return
-
-    submit.disabled = true
-    submit.querySelector('span').textContent = 'Sending…'
-    try {
-      await emailjs.send('service_d7lp08g', 'template_7q4ld1u', {
-        from_name: fields.name.input.value.trim(),
-        from_email: fields.email.input.value.trim(),
-        message: fields.message.input.value.trim(),
-      })
-      form.reset()
-      status.textContent = 'Message sent. I’ll get back to you soon.'
-      status.classList.add('is-success')
-    } catch {
-      status.textContent = 'Could not send. Email me directly at hp@haportech.space.'
-      status.classList.add('is-error')
-    } finally {
-      submit.disabled = false
-      submit.querySelector('span').textContent = 'Send message'
-    }
-  })
-}
-
-
 initNavigation()
-initContactForm()

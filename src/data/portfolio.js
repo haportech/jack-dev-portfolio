@@ -58,7 +58,6 @@ export const featuredProjects = [
     detailAlt: 'Vangdy Guest House rooms and prices with an actual room photograph',
     links: [
       { label: 'Visit website', url: 'https://vangdy-guesthouse.haportech.space/' },
-      { label: 'GitHub', url: 'https://github.com/haportech/vangdy-guesthouse-web' },
     ],
   },
 ]

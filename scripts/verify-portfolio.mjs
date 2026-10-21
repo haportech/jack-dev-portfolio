@@ -2,12 +2,13 @@ import assert from 'node:assert/strict'
 import { createRequire } from 'node:module'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
+import { resolve, sep } from 'node:path'
 import { featuredProjects } from '../src/data/portfolio.js'
 
 const require = createRequire(new URL('../../supplytrace/package.json', import.meta.url))
 const { chromium } = require('@playwright/test')
 const baseURL = process.env.BASE_URL || 'http://127.0.0.1:3000'
-const output = fileURLToPath(new URL('../docs/checks/', import.meta.url))
+const output = resolve(process.env.VERIFY_OUTPUT || fileURLToPath(new URL('../docs/checks/', import.meta.url))) + sep
 await mkdir(output, { recursive: true })
 const browser = await chromium.launch({ headless: true })
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 })
@@ -15,18 +16,12 @@ const page = await context.newPage()
 const results = []
 const pageErrors = []
 const emailRequests = []
-let emailResponse = 'success'
 page.on('pageerror', error => pageErrors.push(error.message))
 
-// Every EmailJS request is fulfilled locally before any page script can send mail.
+// Block regressions before any page script can send mail.
 await context.route(/^https:\/\/[^/]*emailjs[^/]*\//i, async route => {
   emailRequests.push({ method: route.request().method(), url: route.request().url() })
-  await route.fulfill({
-    status: emailResponse === 'success' ? 200 : 500,
-    contentType: 'text/plain',
-    headers: { 'access-control-allow-origin': '*' },
-    body: emailResponse === 'success' ? 'OK' : 'Test delivery failure',
-  })
+  await route.abort('blockedbyclient')
 })
 const videoRequests = []
 page.on('request', request => {
@@ -163,13 +158,8 @@ try {
       }
     }
   })
-  await step('selection, editable controls, drag suppression and valid links', async () => {
+  await step('selection, drag suppression and valid links', async () => {
     assert.equal(await page.locator('body').evaluate(element => getComputedStyle(element).userSelect), 'none')
-    for (const selector of ['#name', '#email', '#message']) {
-      const field = page.locator(selector)
-      assert.equal(await field.isEditable(), true)
-      assert.equal(await field.evaluate(element => getComputedStyle(element).userSelect), 'text')
-    }
     for (const selector of ['#project-panels img', 'a[href]']) {
       assert.equal(await page.locator(selector).first().evaluate(element => {
         const event = new Event('dragstart', { bubbles: true, cancelable: true })
@@ -177,11 +167,6 @@ try {
         return event.defaultPrevented
       }), true)
     }
-    assert.equal(await page.locator('#name').evaluate(element => {
-      const event = new Event('dragstart', { bubbles: true, cancelable: true })
-      element.dispatchEvent(event)
-      return event.defaultPrevented
-    }), false)
     const issues = await page.locator('a[href]').evaluateAll(links => links.flatMap(link => {
       const raw = link.getAttribute('href')
       if (!raw || raw === '#') return ['Empty link']
@@ -197,37 +182,24 @@ try {
     assert.ok(await page.locator('a[href*="github.com/haportech"]').count())
     assert.ok(await page.locator('a[href*="t.me/haportech"]').count())
   })
-  await step('contact invalid validation, intercepted success and intercepted failure', async () => {
-    const submit = page.locator('#contact-form button[type="submit"]')
-    await submit.click()
-    for (const field of ['name', 'email', 'message']) {
-      assert.equal(await page.locator(`#${field}`).getAttribute('aria-invalid'), 'true')
-      assert.ok((await page.locator(`#${field}-error`).textContent()).trim())
-    }
-    assert.equal(emailRequests.length, 0)
-    await page.locator('#name').fill('Portfolio check')
-    await page.locator('#email').fill('invalid')
-    await page.locator('#message').fill('Intercepted verification only. No email is sent.')
-    await submit.click()
-    assert.equal(await page.locator('#email').getAttribute('aria-invalid'), 'true')
-    assert.equal(emailRequests.length, 0)
-    await page.locator('#email').fill('portfolio-check@example.invalid')
-    await submit.click()
-    await page.waitForSelector('#form-status.is-success')
-    assert.match(await page.locator('#form-status').textContent(), /message sent/i)
-    assert.equal(emailRequests.length, 1)
-    for (const field of ['name', 'email', 'message']) assert.equal(await page.locator(`#${field}`).inputValue(), '')
-    emailResponse = 'failure'
-    await page.locator('#name').fill('Portfolio check')
-    await page.locator('#email').fill('portfolio-check@example.invalid')
-    await page.locator('#message').fill('Intercepted failure check only.')
-    await submit.click()
-    await page.waitForSelector('#form-status.is-error')
-    assert.match(await page.locator('#form-status').textContent(), /could not send/i)
-    assert.equal(emailRequests.length, 2)
-    assert.equal(await submit.isEnabled(), true)
-    assert.equal(await page.locator('#message').inputValue(), 'Intercepted failure check only.')
-    assert.ok(emailRequests.every(request => request.method === 'POST' && new URL(request.url).hostname === 'api.emailjs.com'))
+  await step('direct email links, keyboard focus and no contact form or mail requests', async () => {
+    const address = 'contact@hapordev.com'
+    const links = page.locator('a[href^="mailto:"]')
+    assert.ok(await links.count())
+    for (const link of await links.all()) assert.equal(await link.getAttribute('href'), `mailto:${address}`)
+    assert.equal((await page.locator('.contact-email').textContent()).trim(), address)
+    const cta = page.locator('.contact-details .button.primary')
+    assert.equal((await cta.textContent()).trim(), 'Email me')
+    assert.equal(await cta.getAttribute('href'), `mailto:${address}`)
+    assert.equal(await cta.isVisible(), true)
+    assert.equal(await cta.evaluate(element => element.tabIndex >= 0), true)
+    await cta.focus()
+    await page.keyboard.press('Shift+Tab')
+    await page.keyboard.press('Tab')
+    assert.equal(await cta.evaluate(element => element === document.activeElement), true)
+    assert.equal(await page.locator('form').count(), 0)
+    assert.doesNotMatch(await page.content(), /hp@haportech\.space|emailjs/i)
+    assert.deepEqual(emailRequests, [])
   })
   await step('reduced motion is static', async () => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
@@ -264,13 +236,16 @@ try {
     for (const [path, pattern] of [['/robots.txt', /sitemap:/i], ['/sitemap.xml', /<urlset[\s>]/i], ['/privacy/', /privacy/i]]) {
       const response = await page.request.get(new URL(path, baseURL).href)
       assert.equal(response.ok(), true, path)
-      assert.match(await response.text(), pattern)
+      const text = await response.text()
+      assert.match(text, pattern)
+      if (path === '/privacy/') assert.doesNotMatch(text, /hp@haportech\.space|emailjs/i)
     }
   })
   assert.deepEqual(pageErrors, [], 'Browser page errors')
   assert.deepEqual(videoRequests, [], 'Unexpected video request')
+  assert.deepEqual(emailRequests, [], 'Unexpected EmailJS request')
   await writeFile(`${output}portfolio-verification.json`, JSON.stringify({ baseURL, passed: true, checks: results, emailRequestsIntercepted: emailRequests.length, pageErrors, videoRequests, reducedMotionCapture: 'Interaction/layout screenshots use normal motion after settlement; final static check emulates reduce.' }, null, 2))
-  console.log(`PASS ${results.length} checks; 2 EmailJS calls intercepted; report docs/checks/portfolio-verification.json`)
+  console.log(`PASS ${results.length} checks; 0 EmailJS calls intercepted; report ${output}portfolio-verification.json`)
 } catch (error) {
   await page.screenshot({ path: `${output}portfolio-failure.png`, fullPage: true }).catch(() => {})
   await writeFile(`${output}portfolio-verification.json`, JSON.stringify({ baseURL, passed: false, checks: results, failure: String(error), pageErrors, emailRequestsIntercepted: emailRequests.length }, null, 2))
